@@ -27,12 +27,12 @@
     novRacun = [[VTGauss alloc] initWithArray:enacbe];
 	[novRacun calculate];
 	
-	NSDictionary *myResitve = [[NSDictionary alloc] initWithDictionary:[novRacun resitve]];
+	//NSDictionary *myResitve = [[NSDictionary alloc] initWithDictionary:[novRacun resitve]];
 	
-	NSEnumerator *key = [myResitve keyEnumerator];
-	NSEnumerator *value = [myResitve objectEnumerator];
+	NSEnumerator *key = [[novRacun resitve] keyEnumerator];
+	NSEnumerator *value = [[novRacun resitve] objectEnumerator];
 	NSMutableString *text = [[NSMutableString alloc] init];
-	NSMutableString *neznanka = [[NSMutableString alloc] init];
+	NSMutableString *neznanka;// = [[NSMutableString alloc] init];
 	
 	
 	for(NSMutableString *kljuc in [key allObjects]) {
@@ -43,11 +43,11 @@
 	
 	
 	[textLabel setStringValue:text];
-	
+	[text release];
 }
 
 - (IBAction)addColumn:(id)sender {
-	NSString *ime = [[NSString alloc] init];
+	NSString *ime;
 	NSTableHeaderCell *header = [[NSTableHeaderCell alloc] init];
 	NSLog(@"adding ime");
 	ime = [NSString stringWithFormat:@"x%d",[enacbeView numberOfColumns]];
@@ -56,12 +56,12 @@
 	NSLog(@"adding column identifier");
 	NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:ime];
 	[column setHeaderCell:header];
+	[header release];
 	NSLog(@"adding column");
 	[enacbeView addTableColumn:column];
 	[enacbeView sizeToFit];
 	[enacbeView reloadData];
 	
-	[ime release];
 	[column release];
 }
 
@@ -71,6 +71,7 @@
 	NSMutableString *identifier = [[NSMutableString alloc] initWithString:@"x"];
 	[identifier appendFormat:@"%d",[enacbeView numberOfColumns]-1];
 	NSTableColumn *column = [enacbeView tableColumnWithIdentifier:identifier];
+	[identifier release];
 	
     [enacbeView removeTableColumn:column];
 	[enacbeView sizeToFit];
@@ -90,8 +91,7 @@
 }
 
 - (IBAction)removeRow:(id)sender {
-	NSIndexSet *index = [[NSIndexSet alloc] init];
-	index = [enacbeView selectedRowIndexes];
+	NSIndexSet *index = [enacbeView selectedRowIndexes];
 	if([index count] == 0) {
 		NSBeep();
 		return;

@@ -48,8 +48,7 @@
 	
 	//dodajanje elementov v tabelo
 	for(i = 0; i < m; i++) {
-		enumeratorNeznanke = [[enacbe objectAtIndex:i] objectEnumerator];
-		j = 0;
+		//enumeratorNeznanke = [[enacbe objectAtIndex:i] objectEnumerator];
 		/*
 		while(vrednost = [enumeratorNeznanke nextObject]) {
 			NSLog(@"Dodajam element %@ v %i %i", vrednost, i,j);
@@ -154,8 +153,8 @@
 	
 	NSLog(@"@ packing");
 	//pakiranje veselih rezulatov
-	NSNumber *value = [[NSNumber alloc] init];
-	NSString *key = [[NSString alloc] init];
+	NSNumber *value;// = [[NSNumber alloc] init];
+	NSString *key;// = [[NSString alloc] init];
 	//NSString *niz = [[NSMutableString alloc] initWithString:@"x"];
 	for(i = 0; i < m; i++) {
 		value = [NSNumber numberWithFloat:matrix[i][n-1]];
@@ -164,7 +163,7 @@
 		
 		[resitve setObject:value forKey:key];
 	}
-	[value release];
+	//[value release];
 	[key release];
 	
 	//sproscanje memorija za matriko
