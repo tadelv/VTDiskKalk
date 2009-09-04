@@ -1,0 +1,9 @@
+This is application is still a work in progress! Use the buttons below, to open the desired calculator. Some features are still not implemented and some of them do not work correctly. The behaviour of the application may still be unpredictable. 
+
+Things to do: 
+	⁃	remake the MainMenu.xib file, load the calculators programmatically 
+	⁃	decide, whether to use Slovenian or English language
+	⁃	implement the isSolvable method for the VTGauss class
+	⁃	make the code look prettier
+
+Author: Vid Tadel, email: tadelv@gmail.com
